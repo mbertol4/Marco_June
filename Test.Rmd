@@ -1,0 +1,39 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+Import procedure
+
+```{r}
+library(haven)
+library(tidyverse)
+mroz <- read_sas("http://www.principlesofeconometrics.com/sas/mroz.sas7bdat", 
+    NULL)
+mroz
+```
+```{r}
+mroz %>%
+ filter(HSIBLINGS >= 2L & HSIBLINGS <= 8L) %>%
+ filter(HHOURS >= 1710L & HHOURS <= 
+    5010L) %>%
+ filter(HAGE >= 34L & HAGE <= 60L) %>%
+ ggplot() +
+ aes(x = TAXABLEINC) +
+ geom_histogram(bins = 30L, fill = "#0c4c8a") +
+ theme_minimal()
+```
+
+
+library(dplyr)
+library(ggplot2)
+
+mroz %>%
+ filter(HSIBLINGS >= 2L & HSIBLINGS <= 8L) %>%
+ filter(HHOURS >= 1710L & HHOURS <= 
+    5010L) %>%
+ filter(HAGE >= 34L & HAGE <= 60L) %>%
+ ggplot() +
+ aes(x = TAXABLEINC) +
+ geom_histogram(bins = 30L, fill = "#0c4c8a") +
+ theme_minimal()
+
